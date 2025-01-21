@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 
 namespace compare_algorithm
 {
@@ -13,16 +14,16 @@ namespace compare_algorithm
         }
         static int[] CreateArray(int size, Random r)
         {
-            
+
         }
         static void menu()
         {
 
         }
-        
+
         static void BubbleSort(int[] a)
         {
-            
+
         }
         static void Merge(int[] a, int low, int mid, int high)
         {
@@ -80,12 +81,63 @@ namespace compare_algorithm
         }
         static bool LinearSearch(int[] a, int numToFind)
         {
+            Console.WriteLine("How many numbers?");
+            int length = Convert.ToInt16(Console.ReadLine());
+            int[] numbers = new int[length];
+            for (int i = 0; i < length; i++)
 
+                Console.WriteLine("Enter your list of numbers");
+
+            numbers[i] = Convert.ToInt16(Console.ReadLine());
         }
-        static bool BinarySearch(int[] a, int numToFind)
+
+
+
+
+        static bool BubbleSort(int[] a, int numToFind)
         {
-            
+
+            Console.WriteLine("");
+
+
+            bool swaps = false;
+
+            do
+            {
+                swaps = false;
+                for (int i = 0; i <= numbers.Length - 1; i++)
+                {
+                    if (numbers[j] > numbers[j + 1])
+                   {
+                       
+                        temp = numbers[j];
+                        numbers[j] = numbers[j + 1];
+                        numbers[j + 1] = temp;
+                        swaps = true;
+
+                   }
+                   
+                }
+            } while (swaps);
+
+            Console.WriteLine("The array is sorted");
+            foreach (int i in numbers)
+            {
+                Console.WriteLine(i);
+
+
+               
+
+
+
+
+
+
+
+
+
+
+            }
         }
-            
     }
 }
