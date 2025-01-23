@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace compare_algorithm
@@ -9,16 +10,28 @@ namespace compare_algorithm
         {
             Random n = new Random();
             Stopwatch sw = new Stopwatch();
-
+            Console.WriteLine("What size would you like your array");
+            int size = Convert.ToInt32(Console.ReadLine());
+            int[] ints = CreateArray(size, n);
+            menu();
 
         }
         static int[] CreateArray(int size, Random r)
         {
+            int[] numbers = new int[size];
+            for (int i = 0; i < numbers.Length; i++) 
+            
+            
+            {
+                numbers[i] = r.Next(1,1000);
+                
+            }
+            return numbers;
 
-        }
         static void menu()
         {
-
+                Console.WriteLine("Algorithm comparer");
+             
         }
 
         static void BubbleSort(int[] a)
@@ -77,67 +90,99 @@ namespace compare_algorithm
                 MergeSortRecursive(a, low, mid);
                 MergeSortRecursive(a, mid + 1, high);
                 Merge(a, low, mid, high);
+                
             }
         }
         static bool LinearSearch(int[] a, int numToFind)
         {
-            Console.WriteLine("How many numbers?");
-            int length = Convert.ToInt16(Console.ReadLine());
-            int[] numbers = new int[length];
-            for (int i = 0; i < length; i++)
-
-                Console.WriteLine("Enter your list of numbers");
-
-            numbers[i] = Convert.ToInt16(Console.ReadLine());
-        }
-
-
-
-
-        static bool BubbleSort(int[] a, int numToFind)
-        {
-
-            Console.WriteLine("");
-
-
-            bool swaps = false;
-
-            do
+            static bool LinearSearch(int[] a, int numToFind)
             {
-                swaps = false;
-                for (int i = 0; i <= numbers.Length - 1; i++)
+                ;
+                int length = a.Length;
+                for (int i = 0; i < length; i++)
                 {
-                    if (numbers[j] > numbers[j + 1])
-                   {
-                       
-                        temp = numbers[j];
-                        numbers[j] = numbers[j + 1];
-                        numbers[j + 1] = temp;
-                        swaps = true;
-
-                   }
-                   
+                    if (a[i] == numToFind)
+                    {
+                        Console.WriteLine($"{numToFind} was found at index {i}");
+                        return true;
+                    }
                 }
-            } while (swaps);
-
-            Console.WriteLine("The array is sorted");
-            foreach (int i in numbers)
-            {
-                Console.WriteLine(i);
-
-
-               
-
-
-
-
-
-
-
-
-
-
+                return false;
             }
+
+
+            static bool BubbleSort(int[] a, int numToFind)
+            {
+
+                Console.WriteLine("How many numbers?");
+                int length = Convert.ToInt16(Console.ReadLine());
+                int[] numbers = new int[length];
+                for (int i = 0; i < length; i++)
+                    numbers[i] = Convert.ToInt16(Console.ReadLine());
+
+                int temp;
+
+
+                bool swaps = false;
+
+                do
+                {
+                    swaps = false;
+                    for (int j = 0; j <= numbers.Length - 1; j++)
+                    {
+
+                        if (numbers[j] > numbers[j + 1])
+                        {
+
+                            temp = numbers[j];
+                            numbers[j] = numbers[j + 1];
+                            numbers[j + 1] = temp;
+                            swaps = true;
+
+                        }
+
+                    }
+                } while (swaps);
+
+                Console.WriteLine("The array is sorted");
+                foreach (int i in numbers)
+                {
+                    Console.WriteLine(i);
+
+
+
+
+                }
+            
+            static bool BinarySearch(int[]a, int numToFind)
+                    {
+                        int lower = 0, upper = a.Length - 1,mid;
+                        while (lower < upper) 
+                        {
+                            mid = (lower + upper) / 2;
+                            if (a[mid] == numToFind)
+                            {
+                                return true;
+                            }
+                            else if (a[mid] > numToFind)
+                            {
+                                upper = mid - 1;
+
+                            }
+                            else 
+                            
+                            {
+                                lower = mid + 1;
+                            
+                            }
+
+                        }
+                    }
+
+                
+            }
+
+
         }
     }
 }
